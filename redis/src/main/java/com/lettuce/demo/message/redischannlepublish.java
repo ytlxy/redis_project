@@ -21,7 +21,7 @@ public class redischannlepublish {
         Disposable disposable=Flux.interval(Duration.ofSeconds(1)).subscribe(new Consumer<Long>() {
             @Override
             public void accept(Long aLong) {
-                reactive.publish(CHANNEL_NAME,"helloworld"+aLong).subscribe();
+                reactive.publish(CHANNEL_NAME,"helloworld").subscribe();
             }
         });
         TimeUnit.DAYS.sleep(Long.MAX_VALUE);

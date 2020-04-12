@@ -1,9 +1,11 @@
 package com.lettuce.demo.message;
 import com.lettuce.demo.util.redisutil;
 import io.lettuce.core.RedisClient;
+import io.lettuce.core.pubsub.RedisPubSubListener;
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.lettuce.core.pubsub.api.reactive.ChannelMessage;
 import io.lettuce.core.pubsub.api.reactive.RedisPubSubReactiveCommands;
+import org.junit.jupiter.api.Test;
 import reactor.core.Disposable;
 
 import java.util.concurrent.TimeUnit;
@@ -19,8 +21,8 @@ public class redischannelsubrbe {
         reactive.subscribe(CHANNEL_NAME).block();
         Disposable disposable =reactive.observeChannels().doOnNext(new Consumer<ChannelMessage<String, String>>() {
             @Override
-            public void accept(ChannelMessage<String, String> stringStringChannelMessage) {
-                System.out.println(String.format("接受信息内容为",stringStringChannelMessage.getMessage()));
+            public void accept(ChannelMessage<String, String> ChannelMessage) {
+                System.out.println(String.format("[%s]接受信息内容为:%s",ChannelMessage.getChannel(),ChannelMessage.getMessage()));
             }
         }).subscribe();
         System.out.println("_______________等待消息接收_______________");
