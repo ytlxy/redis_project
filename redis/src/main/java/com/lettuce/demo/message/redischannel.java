@@ -4,7 +4,6 @@ import com.lettuce.demo.util.redisutil;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.lettuce.core.pubsub.api.reactive.RedisPubSubReactiveCommands;
-import reactor.core.Disposable;
 
 public class redischannel {
     public static final String CHANNEL_NAME="message-channel";
