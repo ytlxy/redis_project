@@ -26,7 +26,7 @@ public class TestSclloic {
             public List<Object> execute(RedisOperations redisOperations) throws DataAccessException {
                 redisOperations.watch("msg");
                 redisOperations.multi();
-                redisOperations.opsForValue().set("msg","zhangsan");
+                redisOperations.opsForValue().set("msg","持之以恒");
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {

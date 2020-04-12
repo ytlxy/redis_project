@@ -17,9 +17,9 @@ public class TestRedistoic {
     @Test
     public void test1(){
         this.stringRedisTemplate.setEnableTransactionSupport(true);
-        this.stringRedisTemplate.watch("星智是好学生");
+        this.stringRedisTemplate.watch("msg");
         this.stringRedisTemplate.multi();
-        this.stringRedisTemplate.opsForValue().set("星智是好学生","分数是76");
+        this.stringRedisTemplate.opsForValue().set("msg","不断学习使自己进步");
         System.out.println("执行事务"+this.stringRedisTemplate.exec());
     }
 }
