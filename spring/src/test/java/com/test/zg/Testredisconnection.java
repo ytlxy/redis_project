@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 @ContextConfiguration(locations = {"classpath:spring/*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class TestRedisconnectionpb {
+public class Testredisconnection {
     public static final String CHANNEL_NAME = "CCTV-5";
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
@@ -22,9 +22,6 @@ public class TestRedisconnectionpb {
         RedisConnection connection=this.redisConnectionFactory.getConnection();
         RedisSerializer<String> stringSerializer= RedisSerializer.string();
         byte[] channer=stringSerializer.serialize(CHANNEL_NAME);
-        for(int a=0;a<100;a++){
-            TimeUnit.SECONDS.sleep(1);
-            connection.publish(channer,("只要有努力就会有回报"+a).getBytes());
-        }
+            connection.publish(channer,("女排赢了").getBytes());
     }
 }
