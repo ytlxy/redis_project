@@ -9,7 +9,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.concurrent.TimeUnit;
 
 @ContextConfiguration(locations = {"classpath:spring/*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)

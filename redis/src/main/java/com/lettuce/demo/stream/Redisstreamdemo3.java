@@ -1,4 +1,5 @@
 package com.lettuce.demo.stream;
+
 import com.lettuce.demo.util.redisutil;
 import io.lettuce.core.RedisFuture;
 import io.lettuce.core.StreamMessage;
@@ -9,11 +10,11 @@ import io.lettuce.core.api.async.RedisAsyncCommands;
 import java.time.Duration;
 import java.util.List;
 
-public class Redisstreamdemo2 {
-    private static final String STREAM_ID="lilongtianyimessage-z1";
+public class Redisstreamdemo3 {
+    private static final String STREAM_ID="message-01";
 
     public static void main(String[] args)throws Exception {
-        StatefulRedisConnection connection=redisutil.getConnection();
+        StatefulRedisConnection connection= redisutil.getConnection();
         RedisAsyncCommands commands=connection.async();
         XReadArgs block=XReadArgs.Builder.block(Duration.ZERO);
         XReadArgs.StreamOffset<String> offset=XReadArgs.StreamOffset.from(STREAM_ID,"$");
