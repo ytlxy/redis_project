@@ -2,50 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>redis_project</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>redis_project</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>redis</module>
-        <module>spring</module>
-        <module>lock</module>
-    </modules>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mybatis.version>3.4.6</mybatis.version>
-        <junit.version>4.12</junit.version>
-        <mybatis_spring.version>1.3.1</mybatis_spring.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-        <lettuce-core.version>5.2.2.RELEASE</lettuce-core.version>
-        <commons-pool2.version>2.6.2</commons-pool2.version>
-        <spring-data-redis.version>2.2.4.RELEASE</spring-data-redis.version>
-        <log4j.version>2.12.1</log4j.version>
-        <jackson.version>2.9.9</jackson.version>
-        <slf4j.version>1.7.29</slf4j.version>
-        <spring.version>5.2.2.RELEASE</spring.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
-        <commons-io.version>2.6</commons-io.version>
-        <c3po.version>0.9.5.5</c3po.version>
-        <reactor-core.version>3.3.2.RELEASE</reactor-core.version>
-    </properties>
-    <build>
-        <finalName>redis</finalName>
-    </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
+    <artifactId>lock</artifactId>
 
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>${mybatis_spring.version}</version>
-        </dependency>
+    <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -90,19 +56,19 @@
             <version>${jackson.version}</version>
         </dependency>
 
-         <dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
-         <dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
-         <dependency>
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
@@ -192,5 +158,4 @@
         </dependency>
 
     </dependencies>
-
 </project>

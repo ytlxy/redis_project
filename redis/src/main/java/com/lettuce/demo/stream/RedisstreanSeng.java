@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class RedisstreanSeng {
-    private static final String STREAM_ID="lilongtianyimessage-z1";
+    private static final String STREAM_ID="message-01";
 
     public static void main(String[] args)throws Exception {
         StatefulRedisConnection connection=redisutil.getConnection();

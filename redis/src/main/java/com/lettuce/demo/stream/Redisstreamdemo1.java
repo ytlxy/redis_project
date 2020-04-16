@@ -10,7 +10,7 @@ import io.lettuce.core.api.async.RedisAsyncCommands;
 import java.time.Duration;
 import java.util.List;
 
-public class Redisstreamdemo3 {
+public class Redisstreamdemo1 {
     private static final String STREAM_ID="message-01";
 
     public static void main(String[] args)throws Exception {
@@ -23,7 +23,7 @@ public class Redisstreamdemo3 {
             RedisFuture<List<StreamMessage<String,String>>> future=commands.xread(block,offset);
             List<StreamMessage<String,String>>managers= future.get();
             for(StreamMessage message : managers){
-                System.out.println("[ConsumerB]接收消息id："+message.getId()+"内存："+message.getBody());
+                System.out.println("[ConsumerA]接收消息id："+message.getId()+"内存："+message.getBody());
             }
         }
         redisutil.close();
