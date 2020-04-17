@@ -6,7 +6,6 @@ import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.reactive.RedisReactiveCommands;
 import reactor.core.publisher.Flux;
 
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 

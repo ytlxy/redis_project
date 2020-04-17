@@ -10,24 +10,24 @@ import java.time.Duration;
 import java.util.List;
 
 public class RedisStreamReceiveGcer {
-    public static final String STREAM_ID="message-01";
-    public static final String GROUP_NAME="Hellogp";
+    public static final String ID="message-01";
+    public static final String GE="Hp";
 
     public static void main(String[] args) {
         StatefulRedisConnection connection=redisutil.getConnection();
         RedisCommands commands=connection.sync();
         XReadArgs block=XReadArgs.Builder.block(Duration.ZERO);
-        XReadArgs.StreamOffset<String>offset= XReadArgs.StreamOffset.from(STREAM_ID,">");
+        XReadArgs.StreamOffset<String>offset= XReadArgs.StreamOffset.from(ID,">");
         for (int i=0;i<3;i++){
             int temp=i;
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     List<StreamMessage<String,String>> list=commands.xreadgroup
-                            (Consumer.from(GROUP_NAME,"Consumer-"+temp),block,offset);
+                            (Consumer.from(GE,"C-"+temp),block,offset);
                     for(StreamMessage message:list){
-                        System.out.println("[stream消费者-"+temp+"}接收消息,id:"+message.getId()+"内容:"+message.getBody());
-                        commands.xack(STREAM_ID,GROUP_NAME,message.getId());
+                        System.out.println("stream"+temp+"id:"+message.getId()+"内容"+message.getBody());
+                        commands.xack(ID,GE,message.getId());
                     }
 
                 }
