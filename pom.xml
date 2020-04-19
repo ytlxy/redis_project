@@ -34,6 +34,7 @@
     <build>
         <finalName>redis</finalName>
     </build>
+    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -190,7 +191,6 @@
             <artifactId>reactor-core</artifactId>
             <version>${reactor-core.version}</version>
         </dependency>
-
     </dependencies>
-
+</dependencyManagement>
 </project>
