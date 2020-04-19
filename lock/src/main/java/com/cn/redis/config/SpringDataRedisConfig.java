@@ -21,10 +21,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class SpringDataRedisConfig {
     @Bean("redisConfiguration")//将Bean对象交与spring管理
     public RedisStandaloneConfiguration getRedisConfiguration(//redis独立配置
-                                                              @Value("${redis.host}") String hostName,
-                                                              @Value("${redis.port}") int port,
-                                                              @Value("${redis.auth}") String password,
-                                                              @Value("${redis.database}") int database
+     @Value("${redis.host}") String hostName,
+     @Value("${redis.port}") int port,
+     @Value("${redis.auth}") String password,
+     @Value("${redis.database}") int database
     ){
         RedisStandaloneConfiguration configuration=new RedisStandaloneConfiguration();
         configuration.setHostName(hostName);
@@ -35,10 +35,10 @@ public class SpringDataRedisConfig {
     }
     @Bean("objectPoolConfig")
     public GenericObjectPoolConfig getObjectPoolconfig(//对象池配置
-                                                       @Value(value = "${redis.pool.maxTotal}") int maxTotal,
-                                                       @Value(value = "${redis.pool.maxIdle}") int maxIdle,
-                                                       @Value(value = "${redis.pool.minIdle}") int minIdle,
-                                                       @Value(value = "${redis.pool.testOnBorrow}") boolean testOnBorrow
+    @Value(value = "${redis.pool.maxTotal}") int maxTotal,
+    @Value(value = "${redis.pool.maxIdle}") int maxIdle,
+    @Value(value = "${redis.pool.minIdle}") int minIdle,
+    @Value(value = "${redis.pool.testOnBorrow}") boolean testOnBorrow
     ){
         GenericObjectPoolConfig poolConfig=new GenericObjectPoolConfig();
         poolConfig.setMaxIdle(maxIdle);
@@ -49,14 +49,14 @@ public class SpringDataRedisConfig {
     }
     @Bean("lettuceClientConfiguration")
     public LettuceClientConfiguration getLettuceClientConfiguration(//Lettuce客户端配置
-                                                                    @Autowired GenericObjectPoolConfig poolConfig
+    @Autowired GenericObjectPoolConfig poolConfig
     ){
         return LettucePoolingClientConfiguration.builder().poolConfig(poolConfig).build();
     }
     @Bean("redisConnectionFactory")
     public RedisConnectionFactory getConnectionFactory(//redis连接工厂
-                                                       @Autowired RedisStandaloneConfiguration redisconfiguration,
-                                                       @Autowired LettuceClientConfiguration lettuceClientConfiguration
+    @Autowired RedisStandaloneConfiguration redisconfiguration,
+    @Autowired LettuceClientConfiguration lettuceClientConfiguration
     ){
         LettuceConnectionFactory connectionFactory=new
                 LettuceConnectionFactory(redisconfiguration,lettuceClientConfiguration);
