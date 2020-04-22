@@ -15,7 +15,6 @@ public class redischannlepublish {
 
     public static void main(String[] args) throws Exception{
         RedisClient redisClient=redisutil.getRedisClient();
-        redisClient.connectPubSub();  //创建发布模式
         StatefulRedisPubSubConnection<String,String> connection=redisClient.connectPubSub();
         RedisPubSubReactiveCommands<String,String> reactive=connection.reactive();
         Disposable disposable=Flux.interval(Duration.ofSeconds(1)).subscribe(new Consumer<Long>() {

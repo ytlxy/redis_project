@@ -10,7 +10,6 @@ public class redischannel {
 
     public static void main(String[] args){
         RedisClient redisClient=redisutil.getRedisClient();
-        redisClient.connectPubSub();
         StatefulRedisPubSubConnection<String,String> connection=redisClient.connectPubSub();
         RedisPubSubReactiveCommands<String,String> reactive=connection.reactive();
         reactive.publish(CHANNEL_NAME,"xian lixun keji xuexuan").subscribe();
