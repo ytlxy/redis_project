@@ -12,6 +12,7 @@
         <module>redis</module>
         <module>spring</module>
         <module>lock</module>
+        <module>grub</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
