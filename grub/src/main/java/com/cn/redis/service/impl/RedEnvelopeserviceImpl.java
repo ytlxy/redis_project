@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class RedEnvelopeserviceImpl implements IRedEnvelopeserice {
     @Autowired
@@ -37,5 +40,19 @@ public class RedEnvelopeserviceImpl implements IRedEnvelopeserice {
             }
             return grabmoney;
         }
+    }
+
+    @Override
+    public Map<String, Double> result(String key) {
+        Map<String ,Double> resultmap=new HashMap<>();
+        if(this.redisTemplate.hasKey(key+SUFFIX)){
+            Map<Object,Object> map=this.redisTemplate.opsForHash().entries(key+SUFFIX);
+            if(map != null){
+                for (Map.Entry<Object,Object> entry: map.entrySet()){
+                    resultmap.put((String) entry.getKey(),(Double) entry.getValue());
+                }
+            }
+        }
+        return resultmap;
     }
 }

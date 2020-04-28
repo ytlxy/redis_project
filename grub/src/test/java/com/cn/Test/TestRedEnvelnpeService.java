@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 @ContextConfiguration(locations = {"classpath:spring/*.xml"})
@@ -27,12 +28,19 @@ public class TestRedEnvelnpeService {
                 @Override
                 public void run() {
                     System.out.println("["+Thread.currentThread().getName()+"]开始抢红包"+redEnvelopeserice
-                            .grab("red-li-1587975226568",Thread.currentThread().getName()));
+                            .grab("red-li-1588062742803",Thread.currentThread().getName()));
                     latch.countDown();
                 }
             },"Thread-"+x).start();
         }
         latch.await();
+    }
+    @Test
+    public void testResult(){
+        Map<String,Double> result=this.redEnvelopeserice.result("red-li-1588062742803");
+        for(Map.Entry<String,Double> entry:result.entrySet()){
+            System.out.println("[红包抢夺结果]用户名："+entry.getKey()+"红包金额:"+entry.getValue());
+        }
     }
 
 }

@@ -12,10 +12,10 @@ public class TestCountDownLatch {
         ExecutorService service= Executors.newFixedThreadPool(5);
         CountDownLatch downLatch=new CountDownLatch(TASKS);
         try {
-            System.out.println("await");
-            for(int x=0;x<10;x++){
+            for(int x=0;x<TASKS;x++){
                 service.execute(new MyWorks(downLatch,x));
             }
+            System.out.println("await");
             downLatch.await();
         }catch (Exception e){
             e.printStackTrace();
